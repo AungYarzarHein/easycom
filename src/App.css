@@ -16,7 +16,7 @@
 .navbar {
   width: 100%;
   padding: .8rem 1rem;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.196);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -60,7 +60,7 @@
     /* border-radius: 18rem; */
 
     &:hover {
-        background-color: #fffdf72b;
+        background-color: #fffdf710;
         transition: all .5s ease;
         /* color: var(--tColor); */
         border-radius: 6px;
@@ -268,12 +268,13 @@
 .seeAllBtn {
     padding: .5rem 1rem;
     background: linear-gradient(to right,rgba(0, 0, 0, 0.244),rgb(27, 27, 27));
-    border-radius: 4px;
+    border-radius: 7px;
     color: var(--bgColor);
     border: none;
-    outline: 1px solid #ffffff4e;
+    /* outline: 1px solid #ffffff4e; */
     /* outline-offset: 2px; */
     min-width: 100px;
+    box-shadow: 0 0 3px rgba(248, 247, 247, 0.676);
     /* font-size: 1rem; */
 }
 
@@ -449,9 +450,14 @@
             display: block;
             /* background-color: #1b1919e0; */
         }
+
+   
 }
 
 @media only screen and (max-width: 600px) {
+
+    
+    
     .navHeader {
         width: 100%;
     }
@@ -462,10 +468,10 @@
 
     .menubar {
         position: absolute;
-        background-color: #272727;
+        background-color: #121111;
         width: 100%;
         /* height: 100%; */
-        right: -100%;
+        left: -100%;
         top: 100%;
         flex-direction: column;
         transition: all .5s ease;
@@ -480,7 +486,7 @@
     }
 
     .show {
-        right: 0;
+        left: 0;
         
     }
 
@@ -553,5 +559,140 @@
 
     100% {
         opacity: 0;
+    }
+}
+
+
+/* ProductList Page */
+
+.itemGridContainer {
+    display: grid;
+    max-width: 1400px;
+    margin-inline: auto;
+    grid-template-columns: repeat(auto-fill , 340px);
+    gap: .5rem;
+    padding: .5rem;
+    /* background-color: rgb(47, 47, 47); */
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.paginationBtn {
+    grid-column: 1/-1;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* margin-inline: auto; */
+    /* padding:0 .5rem; */
+    /* background-color: #FFFDF7; */
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.pagiBtn {
+    border: none;
+    outline: none;
+    padding: .5rem 1rem;
+    min-width: 80px;
+    font-size: 1rem;
+    background-color: #000000;
+    color: white;
+}
+
+.pagiIndicator {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.pagiIndicatorBtn {
+    padding: .5rem .8rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    min-width: 50px;
+}
+
+.currentCount {
+    background-color: #50514F;
+}
+
+.item {
+    max-width: 340px;
+    background-color: hsla(0, 52%, 96%, 0.068);
+    /* background: linear-gradient(to right, rgba(255, 252, 252, 0.26) ,rgba(2, 76, 80, 0.285)); */
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.301);
+   
+}
+
+.itemImageDiv {
+    width: 40%;
+    
+}
+
+
+.itemImage {
+    width: 100%;
+    /* background-color: rgba(255, 255, 255, 0.035); */
+    /* background: linear-gradient(0deg , #fdfcfc1b ,rgba(117, 128, 0, 0.17)); */
+    /* filter: blur(20px); */
+    /* z-index: 100; */
+}
+
+.itemDescription {
+    flex: 1;
+    padding: .3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+    
+    /* background-color: #F25F5C; */
+}
+
+.itemDescription .itemName {
+    color: var(--bgColor);
+    font-size: .9rem;
+    padding-block: .4rem;
+    text-transform: capitalize;
+    
+}
+
+.itemPrice {
+    font-size: 1.2rem;
+    color: #FFE066;
+}
+
+.itemRating {
+    padding-block: .3rem;
+    font-size: .9rem;
+}
+
+.discount {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /* width: 50px;
+    height: 50px;
+    border-radius: 25px; */
+    /* width: 150px; */
+    background-color: rgba(31, 31, 31, 0.665);
+    text-align: center;
+    /* line-height: 50px; */
+    font-size: .9rem;
+    padding: .4rem;
+    color: var(--sweet);
+    border-top-left-radius: 20%;
+    /* transform: rotate(-45deg); */
+}
+
+
+@media only screen and (max-width:705px) {
+    .pagiIndicator {
+        display: none;
     }
 }

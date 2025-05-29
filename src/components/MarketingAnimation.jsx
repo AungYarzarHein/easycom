@@ -10,13 +10,13 @@ const MarketingAnimation = () => {
           <div className="marketingContainer">
 
               <div className="girlDiv">
-                  <motion.img initial={{translateX:"-100%",opacity:0}} whileInView={{translateX:0,opacity:1}} transition={{duration:1,delay:.5}} src={boy} className='boyImage' />
+                  <motion.img initial={{opacity:0,translateY:"50px"}} whileInView={{opacity:1,translateY:0}} transition={{duration:1,delay:.5}} src={boy} className='boyImage' />
               </div>
               <div className="textDiv">
                   Your Boyfriend dont need to do anything
               </div>
               <div className="girlDiv">
-                  <motion.img src={girl} initial={{ translateX: "100%", opacity: 0 }} whileInView={{ translateX: 0, opacity: 1 }} transition={{ duration: 1,delay:.5 }} className='girlImage' />
+                  <motion.img src={girl} initial={{ opacity: 0,translateY:"50px" }} whileInView={{  opacity: 1 ,translateY:0 }} transition={{ duration: 1,delay:.5 }} className='girlImage' />
               </div>
           </div>
 
