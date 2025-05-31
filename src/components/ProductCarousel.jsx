@@ -6,12 +6,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const ProductCarousel = () => {
      const [products,setProducts] = useState([]);
      const [loading,setLoading] = useState(true);
+     const navigate = useNavigate();
         
 
     useEffect(() => { 
@@ -20,7 +22,7 @@ const ProductCarousel = () => {
             .then(data => {
                 setProducts(data.products);
                 setLoading(false);
-                console.log(data)
+                // console.log(data)
             });
      } ,[])
 
@@ -36,8 +38,8 @@ const ProductCarousel = () => {
   return (
     <div className="carouselContainer">
         <div className="btnContainer">
-              <button className="seeAllBtn"> See All </button>
-              <button className="seeAllBtn"> See All </button>
+              <button className="seeAllBtn" onClick={() => navigate("/products")}  > See All </button>
+              <button className="seeAllBtn" onClick={() => navigate("/products")} > See All </button>
         </div>
        <Swiper
        slidesPerView={"auto"}

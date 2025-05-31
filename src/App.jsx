@@ -5,6 +5,13 @@ import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import "./App.css";
 import ProductList from './pages/ProductList'
+import ProductDetails from './pages/ProductDetails';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+
+
+const queryClient = new QueryClient();
+
 
 
 const Root = () => {
@@ -33,6 +40,10 @@ const App = () => {
       {
         path: "products",
         Component: ProductList
+      },
+      {
+        path: "products/:id",
+        Component: ProductDetails
       }
     ]
   },
@@ -41,7 +52,9 @@ const App = () => {
 
   return (
      
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient} >
+        <RouterProvider router={router} /> 
+      </QueryClientProvider>
   )
 }
 

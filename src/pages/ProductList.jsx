@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard';
 import Item from '../components/Item';
+import { useQuery } from '@tanstack/react-query';
 
 const ProductList = () => {
   const [products , setProducts] = useState([]);
   const [loading,setLoading] = useState(true);
   const [currentCount,setCurrentCount] = useState(1);
 
+  // const query = useQuery({
+
+  // })
+
 
   useEffect(() => { 
-    fetch('https://dummyjson.com/products')
+    fetch('https://dummyjson.com/products?skip=30')
       .then(res => res.json())
       .then(data => {
         setProducts(data.products);
-        setLoading(false)
+        setLoading(false);
+        console.log(data.products)
       });
 
    } ,[])

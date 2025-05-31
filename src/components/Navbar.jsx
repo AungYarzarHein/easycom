@@ -11,16 +11,21 @@ const Navbar = () => {
     setShow(!show)
   }
 
+  const onProducts = () => {
+    navigate("products");
+    setShow(!show);
+  }
+
   return (
     <div className="navbar">
-        <div className="navHeader" onClick={()=>navigate("/")} >
-        <span className="navHeaderText gradientText"> EasyCom</span>
+        <div className="navHeader"  >
+        <span className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</span>
         </div>
 
       {show ? <FiX className='icon' onClick={onClickHandler} /> : <FiAlignCenter className='icon' onClick={onClickHandler}  />  } 
 
         <div className={show ? "menubar show" : "menubar"} >
-          <span className="menuItem" onClick={()=>navigate("products")} > Products </span>
+          <span className="menuItem" onClick={onProducts} > Products </span>
           <span className="menuItem"> Carts </span>
           <span className="menuItem"> Login </span>
         </div>

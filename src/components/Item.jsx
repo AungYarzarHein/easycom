@@ -1,8 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Item = ({obj}) => {
+  const navigate = useNavigate();
+  const onClickHandler = () => {
+    navigate(`/products/${obj.id}`, {state:obj} )
+  }
   return (
-    <div className="item">
+    <div className="item" onClick={onClickHandler} >
         <div className="itemImageDiv">
             <img src={obj.images[0]} alt='image' className='itemImage' />
         </div>
