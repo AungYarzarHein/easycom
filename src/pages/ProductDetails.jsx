@@ -52,7 +52,7 @@ const ProductDetails = () => {
   const data = useLocation();
   const actualPrice = data.state.price - (data.state.price * (data.state.discountPercentage /100)) ;
 
-  console.log(id , data.state);
+  // console.log(id , data.state);
 
   const obj = data.state ;
 

@@ -4,6 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const ReviewCard = ({obj}) => {
 
+
     return(
         <div className="reviewCard">
             <div className="rUser">
@@ -21,7 +22,7 @@ const ReviewCard = ({obj}) => {
 }
 
 const Reviews = ({arr}) => {
-    console.log(arr)
+    // console.log(arr)
   return (
     <div className="review">
         {

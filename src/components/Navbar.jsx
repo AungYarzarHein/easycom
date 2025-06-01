@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
         <div className="navHeader"  >
-        <span className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</span>
+        <button className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</button>
         </div>
 
       {show ? <FiX className='icon' onClick={onClickHandler} /> : <FiAlignCenter className='icon' onClick={onClickHandler}  />  } 

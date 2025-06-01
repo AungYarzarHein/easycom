@@ -1,9 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
-const Item = ({obj}) => {
+const Item = ({obj }) => {
+  // console.log(obj.id , "is running");
+
   const navigate = useNavigate();
   const onClickHandler = () => {
+    
     navigate(`/products/${obj.id}`, {state:obj} )
   }
   return (

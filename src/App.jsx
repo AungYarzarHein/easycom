@@ -7,6 +7,8 @@ import "./App.css";
 import ProductList from './pages/ProductList'
 import ProductDetails from './pages/ProductDetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 
 
@@ -53,7 +55,9 @@ const App = () => {
   return (
      
       <QueryClientProvider client={queryClient} >
-        <RouterProvider router={router} /> 
+        <Provider store={store} >
+          <RouterProvider router={router} /> 
+        </Provider>
       </QueryClientProvider>
   )
 }
