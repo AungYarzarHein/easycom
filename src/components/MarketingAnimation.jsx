@@ -10,7 +10,11 @@ const MarketingAnimation = () => {
           <div className="marketingContainer">
 
               <div className="girlDiv">
+<<<<<<< HEAD
                   <motion.img initial={{opacity:0,translateY:"50px"}} whileInView={{opacity:1,translateY:0}} transition={{duration:1,delay:.5}} src={girl} className='girlImage' alt='image'  />
+=======
+                  <motion.img initial={{opacity:0,translateY:"50px"}} whileInView={{opacity:1,translateY:0}} transition={{duration:1,delay:.5}} src={girl} className='girlImage' />
+>>>>>>> 6d4c5869126a9f7d44cfd2cf52e409e693c4ae74
               </div>
 
               <div className="textDiv">

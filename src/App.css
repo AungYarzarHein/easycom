@@ -466,8 +466,8 @@
 
     .menubar {
         position: fixed;
-        background-color: rgba(0, 0, 0, 0.153);
-        backdrop-filter: blur(30px);
+        background-color: rgba(0, 0, 0, 0.196);
+        backdrop-filter: blur(20px);
         --webkit-backdrop-filter:blur(20px);
         width: 100%;
         height: 100dvh;
