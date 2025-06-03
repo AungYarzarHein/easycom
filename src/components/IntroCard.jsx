@@ -59,11 +59,7 @@ const IntroCard = () => {
         </div>
 
         <div className="introImageCard">
-<<<<<<< HEAD
         <motion.img src={products[count].images[0]} ref={imgRef} className='introImage' initial={{ scale: .6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: .5, delay: .3 }} key={`${count}img`} alt='introImage' loading='lazy' />
-=======
-        <motion.img src={products[count].images[0]} ref={imgRef} className='introImage' initial={{ scale: .6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: .5, delay: .3 }} key={`${count}img`} />
->>>>>>> 6d4c5869126a9f7d44cfd2cf52e409e693c4ae74
             <div className="nextBtns">
               <GrPrevious className='prevBtn' onClick={prevItem} />
               <GrNext className='nextBtn' onClick={nextItem} />
