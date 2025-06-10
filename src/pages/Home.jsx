@@ -12,18 +12,15 @@ const Home = () => {
 
   return (
     <div className="container">
-     
       <IntroCard />
-
      <TextAnimation />
-     
       <div className="carouselDiv">
         <ProductCarousel />
       </div>
 
       <MarketingAnimation />
     
-     
+
      <Footer />
     </div>
   )

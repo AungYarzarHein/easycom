@@ -60,7 +60,7 @@ const fetchData = async (count) => {
 
   if (isLoading) {
     return (
-      <div className="introContainer">
+      <div className="loadingDiv">
         <div className="loading">Loading...</div>
       </div>
     )

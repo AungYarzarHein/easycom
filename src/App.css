@@ -8,6 +8,7 @@
     --sweet:#F25F5C;
     --tColor:#50514F;
     --yello:#FFE066;
+    box-sizing: border-box;
     /* background-color: var(--sweet); */
     /* min-height: 100vh; */
 }
@@ -15,8 +16,8 @@
 
 .navbar {
   width: 100%;
-  padding: .8rem 1rem;
-  background-color: rgba(0, 0, 0, 0.196);
+  /* padding: .8rem 1rem; */
+  /* background-color: rgba(84, 255, 11, 0.985); */
   backdrop-filter: blur(20px);
   --webkit-backdrop-filter:blur(20px);
   box-sizing: border-box;
@@ -33,7 +34,9 @@
 .navHeader {
     display: flex;
     flex: 1;
-    
+    /* background-color: rebeccapurple; */
+    height: 100%;
+    padding-left: 1rem;
 }
 
 .navHeaderText {
@@ -52,12 +55,23 @@
 
 }
 
+.iconDiv {
+    display: flex;
+    width: 50px;
+    /* background-color: #ffd700; */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .menubar {
     display: flex;
     flex: 1;
     flex-direction: row;
     gap: 1rem;
     justify-content: flex-start;
+    /* background-color: red; */
+    height: 100%;
    
 }
 
@@ -143,14 +157,17 @@
 
 
 .introContainer {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    overflow: hidden;
     /* margin-top: 50px; */
     /* background-color: var(--yello); */
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    min-height: 400px;
+    /* min-height: 400px; */
+    /* background-color: #F25F5C; */
 }
 
 .introDescription {
@@ -462,11 +479,12 @@
 
     .icon {
         display: block;
+        /* background-color: red; */
     }
 
     .menubar {
         position: fixed;
-        background-color: rgba(0, 0, 0, 0.196);
+        background-color: rgba(0, 0, 0, 0.63);
         backdrop-filter: blur(20px);
         --webkit-backdrop-filter:blur(20px);
         width: 100%;
@@ -500,6 +518,13 @@
 
    
 
+    .loadingDiv {
+        width: 100vw;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
    
 

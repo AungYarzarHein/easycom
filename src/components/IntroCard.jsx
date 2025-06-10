@@ -35,9 +35,7 @@ const IntroCard = () => {
         }
       }
 
-      const animateImage = () => {
-        animate(imgRef.current , {opacity:[0,1],scale:[.6,1]},{duration:1,delay:.6})
-      }
+      
     
     
       if(loading) {

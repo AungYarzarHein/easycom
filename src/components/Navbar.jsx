@@ -22,8 +22,12 @@ const Navbar = () => {
         <button className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</button>
         </div>
 
-      {show ? <FiX className='icon' onClick={onClickHandler} /> : <FiAlignCenter className='icon' onClick={onClickHandler}  />  } 
+      
 
+        <div className='iconDiv' >
+        {show ? <FiX className='icon' onClick={onClickHandler} /> : <FiAlignCenter className='icon' onClick={onClickHandler} />} 
+
+        </div>
         <div className={show ? "menubar show" : "menubar"} >
           <span className="menuItem" onClick={onProducts} > Products </span>
           <span className="menuItem"> Carts </span>
