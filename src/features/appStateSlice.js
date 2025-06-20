@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-    count:3
+    count:1
 }
 
 

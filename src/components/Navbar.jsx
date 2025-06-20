@@ -11,8 +11,8 @@ const Navbar = () => {
     setShow(!show)
   }
 
-  const onProducts = () => {
-    navigate("products");
+  const onChangePage = (routeName) => {
+    navigate(routeName);
     setShow(!show);
   }
 
@@ -29,9 +29,9 @@ const Navbar = () => {
 
         </div>
         <div className={show ? "menubar show" : "menubar"} >
-          <span className="menuItem" onClick={onProducts} > Products </span>
+          <span className="menuItem" onClick={() => onChangePage("products")} > Products </span>
           <span className="menuItem"> Carts </span>
-          <span className="menuItem"> Login </span>
+          <span className="menuItem" onClick={() => onChangePage("login")} > Login </span>
         </div>
     </div>
   )

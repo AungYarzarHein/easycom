@@ -1,6 +1,5 @@
 import React from 'react';
-import girl from "../assets/girlshop.svg";
-import boy from "../assets/boy.svg";
+import prize from "../assets/prize.svg";
 import { motion } from "motion/react";
 
 
@@ -9,14 +8,18 @@ const MarketingAnimation = () => {
     
           <div className="marketingContainer">
 
-              <div className="girlDiv">
-                  <motion.img initial={{opacity:0,translateY:"50px"}} whileInView={{opacity:1,translateY:0}} transition={{duration:1,delay:.5}} src={girl} className='girlImage' alt='image'  />
+            <h3 className='gradientText' > Big Surprise is waiting for you </h3>
+            
+            <div className="marketDiv">
+              <div className="marketingDiv">
+                  <motion.img initial={{scale:0.7}} whileInView={{scale:1}} transition={{delay:.3,duration:.5}} src={prize} alt='image' className='marketImage' />
               </div>
 
-              <div className="textDiv">
-                  Get Everything in one place
-              </div>
-             
+              <motion.div className="marketingDiv" initial={{ scale: 0.8 }} whileInView={{ scale: 1 }} transition={{ delay: .3, duration: .5 }} >
+                  <button  className="signIn"> Buy Now </button>
+                  <button className="register"> Register </button>
+              </motion.div>
+            </div>
           </div>
 
   

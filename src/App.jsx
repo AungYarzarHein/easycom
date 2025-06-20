@@ -9,6 +9,8 @@ import ProductDetails from './pages/ProductDetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import LoginPage from './pages/LoginPage'
+import Register from './pages/Register'
 
 
 
@@ -33,7 +35,7 @@ const App = () => {
  const router = createBrowserRouter([
   {
     path:"/",
-    Component: Root,
+    element: <Root />,
     children:[
       {
         index:true,
@@ -49,6 +51,14 @@ const App = () => {
       }
     ]
   },
+  {
+    path:"/login",
+    element: <LoginPage />
+  },
+  {
+    path:"/register",
+    element:<Register />
+  }
  
  ])
 
