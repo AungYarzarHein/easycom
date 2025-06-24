@@ -8,7 +8,8 @@ const Register = () => {
     const [formData, setFormData] = useState({
         username: "",
         email: "",
-        password: ""
+        password: "",
+        cpassword:""
     })
 
     const onChangeText = (e) => {
@@ -17,11 +18,11 @@ const Register = () => {
 
     return (
         <div className="main">
-            <div className="navbar">
+            {/* <div className="navbar">
                 <div className="navHeader"  >
                     <button className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</button>
                 </div>
-            </div>
+            </div> */}
 
             <div className="container flexCenter">
                 <div className="loginFormContainer">
@@ -33,17 +34,25 @@ const Register = () => {
                                 <span>Already have an account?</span> <span className="signup" onClick={() => navigate("/login")} >Login</span>
                             </div>
 
-                            <label htmlFor="username"> <CiUser size={18} /> Username </label>
-                            <input name='username' type='text' placeholder='username' value={formData.username} onChange={(e) => onChangeText(e)} className='formInput' />
+                            <div className="inputDiv">
+                                <label htmlFor="username"> <CiUser size={18} />  </label>
+                                <input name='username' type='text' placeholder='username' value={formData.username} onChange={(e) => onChangeText(e)} className='textInput' />
+                            </div>
 
-                            <label htmlFor="email"> <CiMail size={18} /> Email </label>
-                            <input name='email' type='email' placeholder='email' value={formData.email} onChange={(e) => onChangeText(e)} className='formInput' />
+                            <div className="inputDiv">
+                                <label htmlFor="email"> <CiMail size={18} /> </label>
+                                <input name='email' type='email' placeholder='email' value={formData.email} onChange={(e) => onChangeText(e)} className='textInput' />
+                            </div>
 
-                            <label htmlFor="password"> <CiLock size={18} /> Password </label>
-                            <input name='password' type='password' placeholder='password' value={formData.password} onChange={(e) => onChangeText(e)} className='formInput' />
+                          <div className="inputDiv">
+                                <label htmlFor="password"> <CiLock size={18} />  </label>
+                                <input name='password' type='password' placeholder='password' value={formData.password} onChange={(e) => onChangeText(e)} className='textInput' />
+                          </div>
 
-                            <label htmlFor="cpassword"> <CiLock size={18} />Comfirm Password </label>
-                            <input name='cpassword' type='password' placeholder='comfirm password' value={formData.password} onChange={(e) => onChangeText(e)} className='formInput' />
+                           <div className="inputDiv">
+                                <label htmlFor="cpassword"> <CiLock size={18} /> </label>
+                                <input name='cpassword' type='password' security='hloe' placeholder='comfirm password' value={formData.cpassword} onChange={(e) => onChangeText(e)} className='textInput' />
+                           </div>
 
                             <button className="formLoginBtn">
                                 Register <CiLogin />
@@ -54,7 +63,7 @@ const Register = () => {
 
                         </form>
 
-                        <button className="formLoginBtn">
+                        <button className="googleSignInBtn">
                             <FcGoogle />   Sign In With Google
                         </button>
                     </div>

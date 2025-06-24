@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiAlignCenter , FiX } from "react-icons/fi";
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import { resetUserData } from '../features/userSlice';
 
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   const [show , setShow] = useState(false);
+  const dispatch = useDispatch();
+  // const [login,setLogin] = useState(false);
   const navigate = useNavigate();
+  // const userData = useSelector(state => state.userData)
 
   const onClickHandler = () => {
     setShow(!show)
@@ -15,6 +22,25 @@ const Navbar = () => {
     navigate(routeName);
     setShow(!show);
   }
+
+
+  const LogInOutHandler = async () => {
+    if(user){
+      await signOut(auth);
+      dispatch(resetUserData());
+      navigate("/login");
+    }else{
+      navigate("/login")
+    }
+  }
+
+
+  // useEffect(()=> {
+  //   console.log(userData, "Hello Friends")
+  //   if(userData.email){
+  //     setLogin(true);
+  //   }
+  // } ,[])
 
   return (
     <div className="navbar">
@@ -29,9 +55,14 @@ const Navbar = () => {
 
         </div>
         <div className={show ? "menubar show" : "menubar"} >
+          <span className="menuItem" onClick={() => onChangePage("products")} > Profile </span>
           <span className="menuItem" onClick={() => onChangePage("products")} > Products </span>
           <span className="menuItem"> Carts </span>
-          <span className="menuItem" onClick={() => onChangePage("login")} > Login </span>
+          <span className="menuItem" onClick={LogInOutHandler} > 
+            {
+              user ? "Log out" : "log in"
+            }
+           </span>
         </div>
     </div>
   )

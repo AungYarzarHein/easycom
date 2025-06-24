@@ -24,6 +24,14 @@
     align-items: center;
 }
 
+.myToast {
+    /* width: 1000px; */
+    /* background-color: red; */
+    /* margin-top: 2rem; */
+    padding: 1rem;
+}
+
+
 
 
 .navbar {
@@ -120,7 +128,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    padding-top: 60px;
+    /* padding-top: 60px; */
 }
 
 
@@ -155,7 +163,8 @@
    flex-direction: column;
    /* padding: 1rem 1.5rem 1.5rem 1.5rem; */
    /* border-radius:4px; */
-   min-height: 50dvh;
+   /* min-height: 50dvh; */
+   /* background-color: gold; */
 }
 
 .rowCenter {
@@ -184,19 +193,30 @@
     }
 }
 
-.formInput {
+.inputDiv {
+    background-color: #000000;
+    border-radius: 4px;
+    padding-left:  .5rem;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    
+}
+
+.textInput {
+    width: 100%;
     padding: .7rem;
     font-size: 1rem;
     border: none;
     outline: none;
-    background-color: #0000004a;
-    margin-top: .4rem;
-    margin-bottom: 1rem;
+    background-color: transparent;
 }
 
-.formInput:focus {
+.inputDiv:focus-within {
     outline: .5px solid rgba(255, 255, 255, 0.449);
 }
+
+
 
 .form label {
     display: inline-flex;
@@ -220,7 +240,7 @@
     padding: .7rem;
     font-size: 1rem;
     margin: 0 auto;
-    margin-top: .5rem;
+    margin-top: 3rem;
     max-width: 270px;
     border-radius: 4px;
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.729);
@@ -229,10 +249,28 @@
 .form span {
     width: 100%;
     text-align: center;
-    margin-top: .5rem;
-    font-size: .9rem;
+    margin-block: .5rem;
+    font-size: .8rem;
 }
 
+
+.googleSignInBtn {
+    border: none;
+    outline: none;
+    width: 70%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    background-color: #000000;
+    color: #FFFDF7;
+    padding: .7rem;
+    font-size: 1rem;
+    margin: 0 auto;
+    max-width: 270px;
+    border-radius: 4px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.729);
+}
 
 
 /* Home Page */

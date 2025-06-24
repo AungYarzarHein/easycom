@@ -9,10 +9,11 @@ const ProductList = () => {
   const [products , setProducts] = useState([]);
   const [loading,setLoading] = useState(true);
   const countData = useSelector((state) => state.currentCount.count);
+  const userData = useSelector(state => state.userData.user);
   const [currentCount, setCurrentCount] = useState(countData);
   const dispatch = useDispatch();
 
-  // console.log(countData , "Hello fcucking friends")
+  console.log(userData , countData)
 
  
 
@@ -68,7 +69,7 @@ const fetchData = async (count) => {
 
 
   return (
-    <div className="container">
+    <div className="container" style={{paddingTop:"60px"}} >
       <div className="itemGridContainer">
 
       <div className="paginationBtn">

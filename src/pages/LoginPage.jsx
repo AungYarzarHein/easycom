@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CiLock , CiUser , CiMail , CiLogin } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from 'react-toastify';
+import { signInWithGoogle } from '../services/userFun';
+import { useDispatch } from 'react-redux';
+import { updateUserData } from '../features/userSlice';
+import { auth } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const LoginPage = () => {
     const navigate  = useNavigate();
+    const dispatch = useDispatch();
     const [formData , setFormData] = useState({
         username:"",
         email:"",
@@ -15,31 +22,57 @@ const LoginPage = () => {
         setFormData({...formData,[e.target.name]:e.target.value})
     }
 
+
+    const googleSignIn = async () => {
+        const userData= await signInWithGoogle();
+        dispatch(updateUserData(userData));
+        navigate("/")
+        // console.log(email , photoURL , displayName , uid);
+    }
+
+
+    useEffect(()=> { 
+        const unSub = onAuthStateChanged(auth,(user) => {
+            if(user){
+                console.log(user.providerData[0])
+                const userData = user.providerData[0] ;
+                dispatch(updateUserData(userData));
+                navigate("/")
+            }
+        });
+
+        return unSub ;
+     } ,[])
+
   return (
     <div className="main">
-        <div className="navbar">
+        {/* <div className="navbar">
               <div className="navHeader"  >
                   <button className="navHeaderText gradientText" onClick={() => navigate("/")} > EasyCom</button>
               </div>
-        </div>
+        </div> */}
 
         <div className="container flexCenter">
            <div className="loginFormContainer">
             
            <div className="formWrapper">
                       <form className='form' >
-                          <h3 className='gradientText' >Login to your account</h3>
-                          <div style={{marginBottom:"1rem"}} >
+                          <h3 className='gradientText' >Sign In to your account</h3>
+                          <div style={{marginBottom:"2rem"}} >
                               <span>Don't have an account?</span> <span className="signup" onClick={() => navigate("/register")} >Sign Up</span>
                           </div>
-                          {/* <label htmlFor="username"> <CiUser size={18} /> Username </label>
-                          <input name='username' type='text' placeholder='username' value={formData.username} onChange={(e) => onChangeText(e)} className='formInput' /> */}
 
-                          <label htmlFor="username"> <CiMail size={18} /> Email </label>
-                          <input name='email' type='email' placeholder='email' value={formData.email} onChange={(e) => onChangeText(e)} className='formInput' />
+                          <div className="inputDiv">
+                              <label htmlFor="username"> <CiMail size={18} /> </label>
+                              <input name='email' type='email' placeholder='email' value={formData.email} onChange={(e) => onChangeText(e)} className='textInput' />
+                          </div>
 
-                          <label htmlFor="username"> <CiLock size={18} /> Password </label>
-                          <input name='password' type='password' placeholder='password' value={formData.password} onChange={(e) => onChangeText(e)} className='formInput' />
+                          <div className="inputDiv">
+                              <label htmlFor="username"> <CiLock size={18} />  </label>
+                              <input name='password' type='password' placeholder='password' value={formData.password} onChange={(e) => onChangeText(e)} className='textInput' />
+                          </div>
+
+                          
 
                           <button className="formLoginBtn">
                               Sign In <CiLogin />
@@ -50,7 +83,7 @@ const LoginPage = () => {
                           
                       </form>
 
-                      <button className="formLoginBtn">
+                      <button className="googleSignInBtn" onClick={googleSignIn} >
                           <FcGoogle />   Sign In With Google
                       </button>
            </div>
