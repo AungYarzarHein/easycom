@@ -9,11 +9,12 @@ const ProductList = () => {
   const [products , setProducts] = useState([]);
   const [loading,setLoading] = useState(true);
   const countData = useSelector((state) => state.currentCount.count);
+  const cartData = useSelector(state => state.cart.cart);
   const userData = useSelector(state => state.userData.user);
   const [currentCount, setCurrentCount] = useState(countData);
   const dispatch = useDispatch();
 
-  console.log(userData , countData)
+  
 
  
 
@@ -62,7 +63,7 @@ const fetchData = async (count) => {
   if (isLoading) {
     return (
       <div className="loadingDiv">
-        <div className="loading">Loading...</div>
+        <div className="spinner"></div>
       </div>
     )
   }

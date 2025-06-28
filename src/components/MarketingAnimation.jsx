@@ -12,13 +12,14 @@ const MarketingAnimation = () => {
             
             <div className="marketDiv">
               <div className="marketingDiv">
-                  <motion.img initial={{scale:0.7}} whileInView={{scale:1}} transition={{delay:.3,duration:.5}} src={prize} alt='image' className='marketImage' />
+                  <motion.img initial={{scale:0.7}} whileInView={{scale:1}} transition={{duration:1}} src={prize} alt='image' className='marketImage' />
               </div>
 
-              <motion.div className="marketingDiv" initial={{ scale: 0.8 }} whileInView={{ scale: 1 }} transition={{ delay: .3, duration: .5 }} >
-                  <button  className="signIn"> Buy Now </button>
-                  <button className="register"> Register </button>
-              </motion.div>
+              <div className="marketingDiv" >
+          <motion.button initial={{ translateX:-100 }} whileInView={{ translateX:0 }} transition={{  duration: .5 }} className="signIn"> Buy Now </motion.button>
+          <motion.button initial={{ translateX: 100 }} whileInView={{ translateX:0 }} transition={{  duration: .5 }} className="register"> Buy Now </motion.button>
+                  
+              </div>
             </div>
           </div>
 

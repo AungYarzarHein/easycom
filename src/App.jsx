@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
 import { updateUserData } from './features/userSlice'
+import Cart from './pages/Cart'
 
 
 
@@ -64,15 +65,19 @@ const App = () => {
     children:[
       {
         index:true,
-        Component: Home
+        element:<Home />
       },
       {
         path: "products",
-        Component: ProductList
+        element: <ProductList />
       },
       {
         path: "products/:id",
-        Component: ProductDetails
+        element: <ProductDetails />
+      },
+      {
+        path:"cart",
+        element: <Cart />
       }
     ]
   },

@@ -8,7 +8,7 @@ const Item = ({obj }) => {
   const navigate = useNavigate();
   const onClickHandler = () => {
     
-    navigate(`/products/${obj.id}`, {state:obj} )
+    navigate(`/products/${obj.id}`, {state:{...obj,nam:0}} )
   }
   return (
     <div className="item" onClick={onClickHandler} >

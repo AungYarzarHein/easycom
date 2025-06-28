@@ -28,7 +28,7 @@ const ProductCarousel = () => {
 
     if (loading) {
         return (
-            <div className="introContainer">
+            <div style={{width:"100%",margin:"0 auto"}} >
                 <div className="loading">Loading...</div>
             </div>
         )

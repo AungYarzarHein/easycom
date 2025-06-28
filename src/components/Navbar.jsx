@@ -12,7 +12,8 @@ const Navbar = ({user}) => {
   const dispatch = useDispatch();
   // const [login,setLogin] = useState(false);
   const navigate = useNavigate();
-  // const userData = useSelector(state => state.userData)
+  const cartData = useSelector(state => state.cart);
+  // console.log(cartData)
 
   const onClickHandler = () => {
     setShow(!show)
@@ -57,7 +58,7 @@ const Navbar = ({user}) => {
         <div className={show ? "menubar show" : "menubar"} >
           <span className="menuItem" onClick={() => onChangePage("products")} > Profile </span>
           <span className="menuItem" onClick={() => onChangePage("products")} > Products </span>
-          <span className="menuItem"> Carts </span>
+        <span className="menuItem relative" onClick={() => onChangePage("cart")} > Carts { cartData.cartTotal > 0 && <span className='doge' > {cartData.cartTotal} </span> } </span>
           <span className="menuItem" onClick={LogInOutHandler} > 
             {
               user ? "Log out" : "log in"

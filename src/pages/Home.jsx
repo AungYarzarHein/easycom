@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { updateUserData } from '../features/userSlice';
 import Navbar from '../components/Navbar';
+import ProductGrid from '../components/ProductGrid';
 
 
 const Home = () => {
@@ -39,10 +40,14 @@ const Home = () => {
       <IntroCard />
      <TextAnimation />
       <div className="carouselDiv">
-        <ProductCarousel />
+        {/* <ProductCarousel /> */}
+        <ProductGrid />
+
       </div>
 
       <MarketingAnimation />
+
+     
     
 
      <Footer />

@@ -40,8 +40,8 @@ const IntroCard = () => {
     
       if(loading) {
         return (
-          <div className="introContainer">
-                <div className="loading">Loading...</div>
+          <div className="loading">
+                <div className="spinner"></div>
           </div>
         )
       }
