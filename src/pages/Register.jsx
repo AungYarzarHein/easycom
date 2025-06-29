@@ -2,6 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CiLock, CiUser, CiMail, CiLogin } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import { signInWithEpass, signUpWithEpass } from '../services/userFun';
+import { useDispatch } from 'react-redux';
+import { updateUserData } from '../features/userSlice';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -10,11 +16,35 @@ const Register = () => {
         email: "",
         password: "",
         cpassword:""
-    })
+    });
+
+    const dispatch = useDispatch();
+
 
     const onChangeText = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(formData);
+        if(formData.password !== formData.cpassword){
+            toast.warn("Password not match ");
+            return ;
+        }
+
+        const result = await signUpWithEpass(formData.email , formData.password);
+        console.log(result);
+        dispatch(updateUserData(result));
+        navigate("/")
+    }
+
+    const googleSignIn = async () => {
+        const result = await signInWithGoogle();
+    }
+
+   
 
     return (
         <div className="main">
@@ -28,7 +58,7 @@ const Register = () => {
                 <div className="loginFormContainer">
 
                     <div className="formWrapper">
-                        <form className='form' >
+                        <form className='form' onSubmit={handleSubmit} >
                             <h3 className='gradientText' >Registeration Form</h3>
                             <div style={{ marginBottom: "1rem" }} >
                                 <span>Already have an account?</span> <span className="signup" onClick={() => navigate("/login")} >Login</span>
@@ -51,10 +81,10 @@ const Register = () => {
 
                            <div className="inputDiv">
                                 <label htmlFor="cpassword"> <CiLock size={18} /> </label>
-                                <input name='cpassword' type='password' security='hloe' placeholder='comfirm password' value={formData.cpassword} onChange={(e) => onChangeText(e)} className='textInput' />
+                                <input name='cpassword' type='password' security='hloe' placeholder='comfirm password' value={formData.cpassword}  onChange={(e) => onChangeText(e)} className='textInput' />
                            </div>
 
-                            <button className="formLoginBtn">
+                            <button className="formLoginBtn" type='submit' >
                                 Register <CiLogin />
                             </button>
 
@@ -63,7 +93,7 @@ const Register = () => {
 
                         </form>
 
-                        <button className="googleSignInBtn">
+                        <button className="googleSignInBtn" onClick={googleSignIn} >
                             <FcGoogle />   Sign In With Google
                         </button>
                     </div>

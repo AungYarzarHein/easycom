@@ -1,9 +1,23 @@
 import React from 'react';
 import { CiTrash , CiEdit } from "react-icons/ci";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteCart, subCartTotal } from '../features/cartSlice';
 
 const CartItem = ({obj}) => {
-    const priceForOne = obj.price * (obj.discountPercentage/100) ; 
+  const priceForOne = obj.price - (obj.price * (obj.discountPercentage / 100)) ; 
     const totalPrice = priceForOne * obj.nam ;
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onEditItem  = () => {
+      navigate(`/products/${obj.id}`, { state: obj })
+    };
+
+    const onDeleteItem = () => {
+      dispatch(deleteCart(obj));
+    }
+
   return (
     <div className="cartItem">
         <div className="cImageDiv">
@@ -18,8 +32,8 @@ const CartItem = ({obj}) => {
         </div>
 
         <div className="editDelete">
-                <CiEdit className='cIcon' />
-                <CiTrash className='cIcon' />
+                <CiEdit className='cIcon' onClick={onEditItem} />
+                <CiTrash className='cIcon' onClick={onDeleteItem} />
         </div>
     </div>
   )

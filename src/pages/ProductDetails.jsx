@@ -37,9 +37,12 @@ const NumOfItem = ({price,addToCart,normalPrice,itemNam}) => {
       setNam(1);
       dispatch(addCartTotal(1));
       addToCart(1);
-    }else if(nam > 1){
-      addToCart(nam)
+      return ;
+    }else if(nam >= 1){
+      addToCart(nam);
     }
+
+    
   }
 
 
@@ -88,7 +91,9 @@ const ProductDetails = () => {
     //   dispatch(addCart({ ...data, nam:1 }))
     // }else{
       // console.log("updating...")
-      dispatch(addCart({...data, nam:nam}));
+    
+        dispatch(addCart({ ...data, nam: nam }));
+      
     // }
    
   }

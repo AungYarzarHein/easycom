@@ -5,15 +5,26 @@ import CartItem from '../components/CartItem';
 const Cart = () => {
     const [loading , setLoading] = useState(true);
     const cartData = useSelector(state => state.cart.cart);
+    const cartLength = useSelector(state => state.cart.cartTotal);
+    const [totalPrice , setTotalPrice] = useState(0);
     // console.log(cartData);
 
 
 
     useEffect(()=> { 
+        
+           
+            const totalP = cartData.reduce((total,item)=> { 
+                return total += (item.price - (item.price * (item.discountPercentage/100))) * item.nam ;
+             } ,0)
+
+             setTotalPrice(totalP);
+            
+        
         setTimeout(()=>{ 
             setLoading(false);
          } ,500)
-     } ,[])
+     } ,[cartData])
 
   if(loading){
       return (
@@ -34,6 +45,7 @@ const Cart = () => {
                </div>
 
                <div className="checkOut">
+                <span className="totalPrice gradientText"> Total -  {totalPrice.toFixed(3)} $ </span>
                 <button className="checkOutBtn"> Check Out </button>
                </div>
             </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { CiLock , CiUser , CiMail , CiLogin } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from 'react-toastify';
-import { signInWithGoogle } from '../services/userFun';
+import { signInWithEpass, signInWithGoogle } from '../services/userFun';
 import { useDispatch } from 'react-redux';
 import { updateUserData } from '../features/userSlice';
 import { auth } from '../firebase';
@@ -13,7 +13,6 @@ const LoginPage = () => {
     const navigate  = useNavigate();
     const dispatch = useDispatch();
     const [formData , setFormData] = useState({
-        username:"",
         email:"",
         password:""
     })
@@ -21,6 +20,15 @@ const LoginPage = () => {
     const onChangeText = (e) => {
         setFormData({...formData,[e.target.name]:e.target.value})
     }
+
+
+
+
+   const ePassSignIn = async (e) => {
+         e.preventDefault();
+         const result = await signInWithEpass(formData.email,formData.password);
+         console.log(result)
+   }
 
 
     const googleSignIn = async () => {
@@ -34,8 +42,8 @@ const LoginPage = () => {
     useEffect(()=> { 
         const unSub = onAuthStateChanged(auth,(user) => {
             if(user){
-                console.log(user.providerData[0])
-                const userData = user.providerData[0] ;
+                // console.log(user.providerData[0])
+                const userData = { ...user.providerData[0], emailVerified:user.emailVerified } ;
                 dispatch(updateUserData(userData));
                 navigate("/")
             }
@@ -56,7 +64,7 @@ const LoginPage = () => {
            <div className="loginFormContainer">
             
            <div className="formWrapper">
-                      <form className='form' >
+                      <form className='form' onSubmit={ePassSignIn} >
                           <h3 className='gradientText' >Sign In to your account</h3>
                           <div style={{marginBottom:"2rem"}} >
                               <span>Don't have an account?</span> <span className="signup" onClick={() => navigate("/register")} >Sign Up</span>
@@ -74,7 +82,7 @@ const LoginPage = () => {
 
                           
 
-                          <button className="formLoginBtn">
+                          <button className="formLoginBtn" type='submit' >
                               Sign In <CiLogin />
                           </button>
 
