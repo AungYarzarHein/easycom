@@ -8,7 +8,7 @@ import 'swiper/css/autoplay';
 import { Autoplay, Pagination , Grid } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 
-const ProductGrid = () => {
+const ProductGrid = ({categoryName}) => {
 
     const [products,setProducts] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -16,7 +16,8 @@ const ProductGrid = () => {
             
     
         useEffect(() => { 
-            fetch('https://dummyjson.com/products?limit=10&skip=10')
+            // fetch('https://dummyjson.com/products?limit=10&skip=10')
+            fetch(`https://dummyjson.com/products/category/${categoryName}`)
                 .then(res => res.json())
                 .then(data => {
                     setProducts(data.products);
@@ -38,7 +39,7 @@ const ProductGrid = () => {
     <div className="carouselContainer">
 
           <div className="btnContainer">
-              <button className="seeAllBtn" onClick={() => navigate("/products")}  > See All </button>
+              <button className="btnLeft gradientText" onClick={() => navigate("/products")}  > {categoryName} </button>
               <button className="seeAllBtn" onClick={() => navigate("/products")} > See All </button>
           </div>
     <Swiper

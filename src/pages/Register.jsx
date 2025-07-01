@@ -12,7 +12,7 @@ import { updateUserData } from '../features/userSlice';
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        username: "",
+        name:"",
         email: "",
         password: "",
         cpassword:""
@@ -28,13 +28,18 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        const { password , email , name , cpassword} = formData;
+        if(!name || !email || !password || !cpassword){
+            toast.warn("Please fill all field");
+            return ;
+        }
+        // console.log(formData);
         if(formData.password !== formData.cpassword){
             toast.warn("Password not match ");
             return ;
         }
 
-        const result = await signUpWithEpass(formData.email , formData.password);
+        const result = await signUpWithEpass(formData.email , formData.password , formData.name);
         console.log(result);
         dispatch(updateUserData(result));
         navigate("/")
@@ -65,8 +70,8 @@ const Register = () => {
                             </div>
 
                             <div className="inputDiv">
-                                <label htmlFor="username"> <CiUser size={18} />  </label>
-                                <input name='username' type='text' placeholder='username' value={formData.username} onChange={(e) => onChangeText(e)} className='textInput' />
+                                <label htmlFor="name"> <CiUser size={18} />  </label>
+                                <input name='name' type='text' placeholder='name' value={formData.name} onChange={(e) => onChangeText(e)} className='textInput' />
                             </div>
 
                             <div className="inputDiv">

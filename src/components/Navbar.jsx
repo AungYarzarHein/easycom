@@ -56,7 +56,7 @@ const Navbar = ({user}) => {
 
         </div>
         <div className={show ? "menubar show" : "menubar"} >
-          <span className="menuItem" onClick={() => onChangePage("products")} > Profile </span>
+          <span className="menuItem" onClick={() => onChangePage("profile")} > Profile </span>
           <span className="menuItem" onClick={() => onChangePage("products")} > Products </span>
         <span className="menuItem relative" onClick={() => onChangePage("cart")} > Carts { cartData.cartTotal > 0 && <span className='doge' > {cartData.cartTotal} </span> } </span>
           <span className="menuItem" onClick={LogInOutHandler} > 

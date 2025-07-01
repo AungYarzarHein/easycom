@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveCurrentCount } from '../features/appStateSlice';
 
 const ProductList = () => {
-  const [products , setProducts] = useState([]);
+  // const [products , setProducts] = useState([]);
   const [loading,setLoading] = useState(true);
   const countData = useSelector((state) => state.currentCount.count);
   const cartData = useSelector(state => state.cart.cart);
   const userData = useSelector(state => state.userData.user);
   const [currentCount, setCurrentCount] = useState(countData);
+  const [show , setShow] = useState(false) ; // category selector
+  const [products , setProducts] = useState('') // for category api
   const dispatch = useDispatch();
 
   
@@ -21,14 +23,14 @@ const ProductList = () => {
 
 const fetchData = async (count) => {
   const skip = 30 * count ;
-  const res = await fetch(`https://dummyjson.com/products?skip=${skip}`) ;
+  const res = products ? await fetch(`https://dummyjson.com/products/category/${products}`) : await fetch(`https://dummyjson.com/products?skip=${skip}`) ;
   const data = await res.json();
   // setProducts(data.products);
   return data.products ;
 }
 
   const { data , isLoading } = useQuery({
-    queryKey: ["products",currentCount],
+    queryKey: ["products",currentCount,products],
     queryFn: () => fetchData(currentCount)
   })
 
@@ -69,8 +71,30 @@ const fetchData = async (count) => {
   }
 
 
+  const onChangeCategory = (name) => {
+      setProducts(name);
+      setCurrentCount(1);
+  }
+
+
   return (
-    <div className="container" style={{paddingTop:"60px"}} >
+    <div className="container" style={{paddingTop:"70px"}} >
+      <div className="categoryContainer">
+       <button className="categorySelector" onClick={()=>setShow(!show)} > Filter By Category </button>
+        <div className={show ? "cateOverlay showCategory " : "cateOverlay"} onClick={()=>setShow(false)} >
+        <div className="categoryItemWrapper">
+            <button className="categoryItem" onClick={() => setProducts("")}  > All </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("smartphones")}  > smartphones </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("beauty")}  > beauty </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("mens-shoes")}  > mens-shoes </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("kitchen-accessories")}  > kitchen-accessories </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("laptops")}  > laptops </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("mens-shirts")}  > mens-shirts </button>
+            <button className="categoryItem" onClick={() => onChangeCategory("groceries")}  > groceries </button>
+        </div>
+       </div>
+       {/* <button className="filterBtn"> Filter </button> */}
+      </div>
       <div className="itemGridContainer">
 
       <div className="paginationBtn">

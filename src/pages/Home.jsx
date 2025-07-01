@@ -40,10 +40,12 @@ const Home = () => {
       <IntroCard />
      <TextAnimation />
       <div className="carouselDiv">
-        {/* <ProductCarousel /> */}
-        <ProductGrid />
-
+        <ProductGrid categoryName={"smartphones"} key={"smartphones"} />
       </div>
+
+      {/* <div className="carouselDiv">
+        <ProductGrid categoryName={"groceries"} key={"groceries"} />
+      </div> */}
 
       <MarketingAnimation />
 

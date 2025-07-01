@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-    user:{
-        walletBill:10000
-    }
+    user:{},
+    walletBill:1000,
+    orderList:[]
 }
 
 
@@ -15,11 +15,11 @@ export const userSlice = createSlice({
     reducers:{
         updateUserData: (state,action) => {
             // state.displayName = action.payload.displayName
-            state.user = {...action.payload,walletBill:state.user.walletBill}
+            state.user = action.payload
         },
 
         updateWallet:(state,action) => {
-            state.user = {...state,walletBill:action.payload}
+            state.walletBill = action.payload
         },
 
         resetUserData : (state,action) => {

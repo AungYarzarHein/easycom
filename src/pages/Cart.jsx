@@ -1,13 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartItem from '../components/CartItem';
+import { orderNow } from '../services/orderFun';
+import { resetCart } from '../features/cartSlice';
+
+
 
 const Cart = () => {
     const [loading , setLoading] = useState(true);
     const cartData = useSelector(state => state.cart.cart);
-    const cartLength = useSelector(state => state.cart.cartTotal);
+    const userData = useSelector(state => state.userData.user);
     const [totalPrice , setTotalPrice] = useState(0);
-    // console.log(cartData);
+    const dispatch = useDispatch();
+    // console.log(userData);
+
+    const clearCart = () => {
+        dispatch(resetCart())
+    }
+
+
+    const onCheckOut = async () => {
+        const arr = cartData.map(item => {
+            const { title , nam , price , discountPercentage, id , thumbnail } = item ;
+            return {title,nam,price,discountPercentage,id,thumbnail}
+        });
+
+        const orderObj = {
+            orderValues:arr,
+            totalPrice,
+            userId:userData.uid
+        };
+
+        // console.log(orderData);
+        try {
+            await orderNow(orderObj , clearCart);
+            
+        } catch (error) {
+            
+        }
+    }
 
 
 
@@ -24,7 +55,8 @@ const Cart = () => {
         setTimeout(()=>{ 
             setLoading(false);
          } ,500)
-     } ,[cartData])
+     } ,[cartData]);
+
 
   if(loading){
       return (
@@ -46,7 +78,7 @@ const Cart = () => {
 
                <div className="checkOut">
                 <span className="totalPrice gradientText"> Total -  {totalPrice.toFixed(3)} $ </span>
-                <button className="checkOutBtn"> Check Out </button>
+                <button className="checkOutBtn" onClick={onCheckOut} > Check Out </button>
                </div>
             </div>
         </div>

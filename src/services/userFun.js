@@ -1,26 +1,30 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 
 
-export const signInWithEpass = async (email,password) => {
+export const signInWithEpass = async (userEmail,password) => {
 
     try {
 
-        const result = await signInWithEmailAndPassword(auth , email,password);
-        return { ...result.user.providerData[0], emailVerified: result.user.emailVerified };
+        const result = await signInWithEmailAndPassword(auth , userEmail,password);
+        const { photoURL , displayName , uid , email , emailVerified , phoneNumber } = result.user ;
+        // console.log(result.user.providerData,result.user.)
+        return { photoURL, displayName, uid, email, emailVerified, phoneNumber };
         
     } catch (error) {
         console.log(error)
     }
 }
 
-export const signUpWithEpass = async (email, password) => {
+export const signUpWithEpass = async (userEmail, password , name) => {
 
     try {
 
-        const result = await createUserWithEmailAndPassword(auth, email, password);
+        const result = await createUserWithEmailAndPassword(auth, userEmail, password);
+        await updateProfile(result.user,{displayName:name});
+        const { photoURL, displayName, uid, email, emailVerified , phoneNumber } = result.user;
         // console.log(result);
-        return { ...result.user.providerData[0] , emailVerified:result.user.emailVerified};
+        return { photoURL, displayName, uid, email, emailVerified, phoneNumber };
 
     } catch (error) {
         console.log(error)
@@ -33,12 +37,18 @@ export const signInWithGoogle = async () => {
     try {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth , provider);
-        return { ...result.user.providerData[0], emailVerified: result.user.emailVerified };
+        const { photoURL, displayName, uid, email, emailVerified, phoneNumber } = result.user;
+        return { photoURL, displayName, uid, email, emailVerified, phoneNumber };
 
 
     } catch (error) {
         console.log(error);
     }
+}
+
+
+export const saveUserData = (data) => {
+    
 }
 
 

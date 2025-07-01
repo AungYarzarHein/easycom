@@ -41,10 +41,15 @@ export const cartSlice = createSlice ({
             if(state.cartTotal > 0){
                 state.cartTotal = state.cartTotal - action.payload
             }
+        },
+
+        resetCart: (state,action) => {
+            state.cart = [];
+            state.cartTotal = 0
         }
       }
 })
 
 
-export const  { updateCart , addCart , deleteCart , addCartTotal , subCartTotal } = cartSlice.actions ;
+export const  { updateCart , addCart , deleteCart , addCartTotal , subCartTotal , resetCart } = cartSlice.actions ;
 export default cartSlice.reducer ;

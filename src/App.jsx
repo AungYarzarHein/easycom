@@ -16,6 +16,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
 import { updateUserData } from './features/userSlice'
 import Cart from './pages/Cart'
+import Profile from './pages/Profile'
 
 
 
@@ -32,9 +33,10 @@ const Root = () => {
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       if (user) {
+        const { displayName , email , emailVerified , uid , photoURL , phoneNumber } = user ;
         // console.log(user.providerData[0])
-        const data = user.providerData[0];
-        dispatch(updateUserData(data));
+        // const data = user.providerData[0];
+        dispatch(updateUserData({displayName , email , emailVerified , uid , photoURL , phoneNumber}));
         setUser(true);
         navigate("/")
       } 
@@ -78,6 +80,10 @@ const App = () => {
       {
         path:"cart",
         element: <Cart />
+      },
+      {
+        path:"profile",
+        element: <Profile />
       }
     ]
   },
