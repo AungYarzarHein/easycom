@@ -36,6 +36,9 @@
 }
 
 
+.myToastClass {
+    margin-top: 4rem;
+}
 
 
 
@@ -897,7 +900,13 @@
    overflow-x: scroll;
    white-space: nowrap;
    text-align: center;
+   scrollbar-width: none;
+   -ms-overflow-style: none;
    /* gap: .3rem; */
+}
+
+.categoryGroup::-webkit-scrollbar {
+    display: none;
 }
 
 .categoryBtn {
@@ -1499,7 +1508,7 @@
 }
 
 .pInfoItem {
-    width: clamp(200px , 80% , 300px);
+    width: clamp(240px , 80% , 300px);
     /* background-color: greenyellow; */
     padding: .5rem 0 0 0;
     display: flex;

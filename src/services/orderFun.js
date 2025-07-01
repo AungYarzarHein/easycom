@@ -11,7 +11,7 @@ export const orderNow = async (orderObj , cb) => {
     timestamp:serverTimestamp()
    }
 
-   console.log(orderData,auth.currentUser.uid)
+//    console.log(orderData,auth.currentUser.uid)
 
     const orderNowPromise = setDoc(doc(firestore, "easy-orders", docId), orderData);
 
@@ -19,7 +19,7 @@ export const orderNow = async (orderObj , cb) => {
         pending:"Ordering...",
         success:"Order completed",
         error:"order not completed"
-    })
+    },{className:"myToastClass"})
 
    try {
     await orderNowPromise ;
