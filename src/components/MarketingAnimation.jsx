@@ -17,7 +17,7 @@ const MarketingAnimation = () => {
 
               <div className="marketingDiv" >
           <motion.button initial={{ translateX:-100 }} whileInView={{ translateX:0 }} transition={{  duration: .5 }} className="signIn"> Buy Now </motion.button>
-          <motion.button initial={{ translateX: 100 }} whileInView={{ translateX:0 }} transition={{  duration: .5 }} className="register"> Buy Now </motion.button>
+          <motion.button initial={{ translateX: 100 }} whileInView={{ translateX:0 }} transition={{  duration: .5 }} className="register"> Register Now </motion.button>
                   
               </div>
             </div>

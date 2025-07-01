@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import girl from "../assets/girl.svg";
 import { FaFacebookSquare , FaTiktok , FaTelegram , FaInstagram } from "react-icons/fa";
 
 
 
 const Footer = () => {
+  const [loading , setLoading] = useState(true);
+  const [quote , setQuote] = useState(null);
+
+  const getRandomQuote = async () => {
+
+  }
+
+  useEffect(()=> { 
+    fetch('https://dummyjson.com/quotes/random')
+      .then(res => res.json())
+      .then(data => {
+        setQuote(data);
+        setLoading(false);
+      });
+
+   } ,[])
   return (
    <>
           <div className="footerContainer">
@@ -37,13 +53,17 @@ const Footer = () => {
 
               <div className="footerTextDiv">
                <span className="gradientText footerHeader"> Today Advice </span>
-                <div className="aboutus">
-                    "About Us" page on a website serves as a platform for a business or organization to share its history
+               {
+                quote && <>
+                 <div className="aboutus">
+                    {quote.quote}
                 </div>
 
                 <div className="author">
-                  John Abrahim
+                 {quote.author}
                 </div>
+                </>
+               }
               </div>
           </div>
 

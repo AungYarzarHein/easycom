@@ -4,6 +4,7 @@ import Item from '../components/Item';
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveCurrentCount } from '../features/appStateSlice';
+import CategorySelector from '../components/CategorySelector';
 
 const ProductList = () => {
   // const [products , setProducts] = useState([]);
@@ -79,7 +80,8 @@ const fetchData = async (count) => {
 
   return (
     <div className="container" style={{paddingTop:"70px"}} >
-      <div className="categoryContainer">
+
+      {/* <div className="categoryContainer">
        <button className="categorySelector" onClick={()=>setShow(!show)} > Filter By Category </button>
         <div className={show ? "cateOverlay showCategory " : "cateOverlay"} onClick={()=>setShow(false)} >
         <div className="categoryItemWrapper">
@@ -93,8 +95,11 @@ const fetchData = async (count) => {
             <button className="categoryItem" onClick={() => onChangeCategory("groceries")}  > groceries </button>
         </div>
        </div>
-       {/* <button className="filterBtn"> Filter </button> */}
-      </div>
+      
+      </div> */}
+
+      <CategorySelector onChangeCategory={onChangeCategory} />
+
       <div className="itemGridContainer">
 
       <div className="paginationBtn">
