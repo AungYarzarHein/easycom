@@ -27,7 +27,7 @@ const LoginPage = () => {
    const ePassSignIn = async (e) => {
          e.preventDefault();
          const result = await signInWithEpass(formData.email,formData.password);
-         console.log(result)
+        //  console.log(result)
    }
 
 

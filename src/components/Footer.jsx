@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import girl from "../assets/girl.svg";
 import { FaFacebookSquare , FaTiktok , FaTelegram , FaInstagram } from "react-icons/fa";
 
 

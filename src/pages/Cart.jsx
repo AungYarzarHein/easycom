@@ -36,7 +36,7 @@ const Cart = () => {
             await orderNow(orderObj , clearCart);
             
         } catch (error) {
-            
+            return ;
         }
     }
 

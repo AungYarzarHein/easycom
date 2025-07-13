@@ -1526,6 +1526,8 @@
 .pUserName {
     width: 90%;
     padding-left: 1rem;
+    /* background-color: red; */
+    overflow: auto;
 }
 
 .walletDiv  {

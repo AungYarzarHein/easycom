@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getOrderHistory } from '../services/orderFun';
 import { FaUserCircle , FaUser , FaMailchimp, FaMailBulk, FaPhone, FaCcVisa, FaCcAmazonPay, FaCcApplePay, FaCcPaypal } from "react-icons/fa";
-import { CiLock, CiUser, CiMail, CiLogin } from "react-icons/ci";
 
 
 const Profile = () => {
@@ -10,12 +9,13 @@ const Profile = () => {
   const userData = useSelector(state => state.userData.user);
   const [order , setOrder] = useState(null);
   const [loading , setLoading] = useState(true);
- 
+  const [totalOrder ,setTotalOrder] = useState(0);
 
   const getOrders = async () => {
         const data = await getOrderHistory(userData.uid);
-        setOrder(data);
+        setOrder(data.sort());
         setLoading(false);
+        setTotalOrder(data.length + 1)
         // console.log(data);
   }
 
@@ -45,12 +45,12 @@ const Profile = () => {
 
               <div className="pInfoItem">
                 <FaMailBulk className='pIcon' />
-                <span className="pUserName"> {userData.email} </span>
+                <span className="pUserName"> {userData.email ? userData.email : "custom@gmail.com"} </span>
               </div>
 
               <div className="pInfoItem">
                 <FaPhone className='pIcon' />
-              <span className="pUserName"> {userData.phoneNumber ? userData.phoneNumber : "09545 454 343"} </span>
+              <span className="pUserName"> {userData.phoneNumber ? userData.phoneNumber : "09 000 000 000"} </span>
               </div>
 
 
@@ -63,7 +63,7 @@ const Profile = () => {
               </div>
 
               <div className="totalPurchase">
-                 <h3 className='gradientText' > 12 </h3>
+                 <h3 className='gradientText' > {totalOrder} </h3>
                  <span> Total Purchase </span>
               </div>
             </div>

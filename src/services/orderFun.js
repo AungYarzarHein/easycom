@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, serverTimestamp, setDoc, where } from "firebase/firestore";
+import { collection, doc, getDocs, orderBy, query, serverTimestamp, setDoc, where } from "firebase/firestore";
 import { v4 as orderId } from "uuid";
 import { auth, firestore } from "../firebase.js";
 import { toast } from "react-toastify";
@@ -38,5 +38,5 @@ export const getOrderHistory = async (id) => {
     const snapshot = await getDocs(q);
     const orderList = snapshot.docs.map(item => item.data());
     
-    return orderList ;
+    return orderList.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds) ;
 }

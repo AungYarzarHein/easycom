@@ -40,7 +40,7 @@ const Register = () => {
         }
 
         const result = await signUpWithEpass(formData.email , formData.password , formData.name);
-        console.log(result);
+        // console.log(result);
         dispatch(updateUserData(result));
         navigate("/")
     }

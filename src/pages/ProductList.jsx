@@ -53,7 +53,7 @@ const fetchData = async (count) => {
   }
 
   const onSaveCount = (nam) => {
-    console.log("Saving currentCount",nam)
+    // console.log("Saving currentCount",nam)
     dispatch(saveCurrentCount(nam));
   }
 
@@ -80,23 +80,6 @@ const fetchData = async (count) => {
 
   return (
     <div className="container" style={{paddingTop:"70px"}} >
-
-      {/* <div className="categoryContainer">
-       <button className="categorySelector" onClick={()=>setShow(!show)} > Filter By Category </button>
-        <div className={show ? "cateOverlay showCategory " : "cateOverlay"} onClick={()=>setShow(false)} >
-        <div className="categoryItemWrapper">
-            <button className="categoryItem" onClick={() => setProducts("")}  > All </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("smartphones")}  > smartphones </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("beauty")}  > beauty </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("mens-shoes")}  > mens-shoes </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("kitchen-accessories")}  > kitchen-accessories </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("laptops")}  > laptops </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("mens-shirts")}  > mens-shirts </button>
-            <button className="categoryItem" onClick={() => onChangeCategory("groceries")}  > groceries </button>
-        </div>
-       </div>
-      
-      </div> */}
 
       <CategorySelector onChangeCategory={onChangeCategory} />
 

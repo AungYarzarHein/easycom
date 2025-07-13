@@ -85,16 +85,7 @@ const ProductDetails = () => {
 
 
   const addToCart = (nam) => {
-    // console.log(nam, "is from children")
-    // if(nam ==0){
-    //   dispatch(addCartTotal(1));
-    //   dispatch(addCart({ ...data, nam:1 }))
-    // }else{
-      // console.log("updating...")
-    
         dispatch(addCart({ ...data, nam: nam }));
-      
-    // }
    
   }
 
@@ -102,8 +93,6 @@ const ProductDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // console.log(prevData);
-    // setData(defaultData);
     if(prevData){
       // console.log("With Prev data",prevData.nam)
       setData(prevData);
